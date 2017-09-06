@@ -19,8 +19,7 @@ namespace EconBot.Dialogs
         public async Task RespondToGreeting(IDialogContext context, LuisResult result)
         {
             Random random = new Random();
-            //int size = greetingList.Count - 1;
-            int randomNumber = random.Next(0, greetingList.Count - 1);
+            int randomNumber = random.Next(0, greetingList.Count);
             await context.PostAsync(greetingList[randomNumber]);
             context.Wait(MessageReceived);
         }

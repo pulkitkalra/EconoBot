@@ -18,7 +18,10 @@ namespace EconBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.LUISDialog());
+                /*Tesing with LUIS*/
+                //await Conversation.SendAsync(activity, () => new Dialogs.LUISDialog());
+                /*Testing World Bank API*/
+                await Conversation.SendAsync(activity, () => new Dialogs.IndicatorDialog());
             }
             else
             {
