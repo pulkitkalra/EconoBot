@@ -20,8 +20,6 @@ namespace EconBot.Dialogs
             "Sure, no problem", "No worries! Econo is glad to help!"};
 
         private List<string> emojiList = new List<string> { " 😊", " 😀", " 😇", " 😎", " 😀" };
-        private const int memeCount = 10;
-
 
         [LuisIntent("Greeting")]
         public async Task RespondToGreeting(IDialogContext context, LuisResult result)
@@ -50,7 +48,8 @@ namespace EconBot.Dialogs
 
             message.Attachments.Add(new Attachment()
             {
-                ContentUrl = "",
+                // generate random meme
+                ContentUrl = images.ImageRandomizer.getRandomMeme(),
                 ContentType = "image/jpg",
                 Name = "Meme"
             });
@@ -65,9 +64,6 @@ namespace EconBot.Dialogs
             await context.PostAsync("Sorry, I'm not sure I understand.");
             context.Wait(MessageReceived);
         }
-
-
-
 
     }
 
