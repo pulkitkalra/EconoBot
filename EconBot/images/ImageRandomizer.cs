@@ -11,19 +11,18 @@ namespace EconBot.images
      * */
     public class ImageRandomizer
     {
-        // WHAT IF THE TOKEN EXPIRES?
+        // NEED TO ENSURE THAT LINK DOES'T BREAK OVER TIME
         private static List<string> memeList = new List<string> {
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image1.jpg?token=ATNxeKDbCjlIc75tF6U5p9A77fpgq6syks5ZucN6wA%3D%3D", // image1
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image2.jpg?token=ATNxeLq-be4GdvEazezg8jp7DlPcPN55ks5ZucS2wA%3D%3D", // image2
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image3.jpg?token=ATNxeJ2fSlM9_a3aQyNknyB1KBlr5uB2ks5ZucTPwA%3D%3D", // image3
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image4.jpg?token=ATNxeDnnKizpv7hZszjxRFxj3EJcXtkmks5ZucTuwA%3D%3D", // image4
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image5.jpg?token=ATNxePmnzVq_jDmq9_qLxXwMidqK2HQSks5ZucUUwA%3D%3D", // image5
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image6.jpg?token=ATNxeBxbigAO8YtJd2LMTyBA1Kw_Ey2Hks5ZucUnwA%3D%3D", // image6
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image7.jpg?token=ATNxeIoWKqzYd6hfvqtam_PRD_fJPYo8ks5ZucVCwA%3D%3D", // image7
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image8.jpg?token=ATNxeCvjYHk1I8OiLauTDtG-iQsRpkaoks5ZucVZwA%3D%3D", // image8
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image9.jpg?token=ATNxeEz3AYsW62I6PGM_TowaIymKOb5aks5ZucVzwA%3D%3D", // image9
-            "https://raw.githubusercontent.com/pulkitkalra/EconoBot/master/EconBot/images/image10.jpg?token=ATNxeMMVPkDvbTqaghLHIzIb0Xfwj_-Oks5ZucWJwA%3D%3D" // image10
-
+            "https://image.ibb.co/bymEgR/image1.jpg", // image1
+            "https://image.ibb.co/nceZgR/image2.jpg", // image2
+            "https://image.ibb.co/hQ7y86/image3.png", // image3
+            "https://image.ibb.co/dxfUFm/image4.png", // image4
+            "https://image.ibb.co/fGL71R/image5.png", // image5
+            "https://image.ibb.co/knA71R/image6.jpg", // image6
+            "https://image.ibb.co/iWY5o6/image7.png", // image7
+            "https://image.ibb.co/gLbQo6/image8.png", // image8
+            "https://image.ibb.co/fLCbvm/image9.jpg", // image9
+            "https://image.ibb.co/cVf71R/image10.jpg"  // image10
         };
 
         public static string getRandomMeme()

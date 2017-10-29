@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EconBot
+namespace EconBot.IndicatorAPI
 {
     /**
      * Class structure is adapted from - https://stackoverflow.com/questions/36912178/cannot-deserialize-json-data 

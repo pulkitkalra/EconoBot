@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using EconBot.IndicatorAPI;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using Microsoft.Bot.Connector;
@@ -11,6 +12,9 @@ using System.Web;
 
 namespace EconBot.Dialogs
 {
+    /// <summary>
+    /// Class inherits from LuisDialog and is invoked by the MessageController whenever the user queries the bot.
+    /// </summary>
     [LuisModel("5ced85b7-4acc-4d05-9144-57ec7be038a2", "f6ea8956f36b4379bcab23f342bfb460")]
     [Serializable]
     public class LUISDialog : LuisDialog<object>
@@ -55,6 +59,28 @@ namespace EconBot.Dialogs
             });
 
             await context.PostAsync(message);
+            context.Wait(MessageReceived);
+        }
+
+        [LuisIntent("GDPTotal")]
+        public async Task GetGDP(IDialogContext context, LuisResult result)
+        {
+            // notify the user that the bot has received their message and is working on it...
+            await context.PostAsync("Processing " + result.Query);
+            // call the world bank converter class to get query indicator, country and date.
+            WorldBankCoverter converter = new WorldBankCoverter(result);
+            // generate query to send to the API.
+            string uri = converter.generateQuery();
+            // use the uri to make a GET Request using the GetIndicator method which returns a resonpse as a PageModel object.
+            var response = await WorldBankRequest.GetIndicator(uri);
+
+            // go through the PageModel objects containing response of query and print out 
+            for (int i = 0; i < response.List.Count(); i++)
+            {
+                // post reply to user
+                await context.PostAsync($"The {response.List[i].Indicator.Value} of {response.List[i].Country.Value} as of {response.List[i].Date} is {response.List[i].Value}");
+            }
+            
             context.Wait(MessageReceived);
         }
 

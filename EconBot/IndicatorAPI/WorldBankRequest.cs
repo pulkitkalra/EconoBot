@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using EconBot.IndicatorAPI;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using System;
@@ -11,20 +12,19 @@ using System.Threading.Tasks;
 using System.Web;
 
 
-namespace EconBot.Dialogs
+namespace EconBot.IndicatorAPI
 {
     [Serializable]
-    public class IndicatorDialog : IDialog<object>
+    public class WorldBankRequest
     {
         static HttpClient client = new HttpClient();
 
-        private static async Task<PageModel> GetIndicator(string date)
+        public static async Task<PageModel> GetIndicator(string RequestURI)
         {
             PageModel Data = new PageModel();
             using (HttpClient client = new HttpClient())
             {
-                string RequestURI = "http://api.worldbank.org/countries/nz/indicators/NY.GDP.MKTP.CD?format=json&date=" + date;
-
+             
                 HttpResponseMessage msg = await client.GetAsync(RequestURI);
 
                 if (msg.IsSuccessStatusCode)
@@ -62,7 +62,7 @@ namespace EconBot.Dialogs
         {
             var activity = await result as Activity;
 
-            // calculate something for us to return
+            // calculate something to return
             string year  = activity.Text;
             var ind = await GetIndicator(year);
 

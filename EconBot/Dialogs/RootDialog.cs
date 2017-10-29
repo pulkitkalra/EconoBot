@@ -5,6 +5,9 @@ using Microsoft.Bot.Connector;
 
 namespace EconBot.Dialogs
 {
+    /// <summary>
+    /// Class is an example of how things work in the Bot Framework.
+    /// </summary>
     [Serializable]
     public class RootDialog : IDialog<object>
     {
